@@ -56,10 +56,12 @@ Client (User) --> |URLS (urls.py)| --> |View (views.py)| <--> |Model (models.py)
 4. Setelah selesai memproses request, view akan merender berkas template HTML yang nantinya akan dikirim sebagai respons HTML ke client (HTTP Response) 
 
 ### 4. VIRTUAL ENVIRONMENT
-- Why do we use a virtual environment?
-- Can we still create Django-based web applications without using a virtual environment?
+- **Why do we use a virtual environment?**
+Virtual environment digunakan untuk mengisolasi package dan dependencies di satu aplikasi sehingga tidak bertabrakan dengan versi lain atau proyek lain dalam satu komputer
+- **Can we still create Django-based web applications without using a virtual environment?**
+Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment masih bisa dilakukan, akan tetapi memungkinkan terjadinya masalah saat proses pengembangan, yaitu terjadi konflik dependensi antar proyek yang berbeda dan muncul masalah pada saat mengelola beberapa proyek yang memiliki versi Python yang berbeda
 
 ### 5. PERBEDAAN MVC, MVT, MVVM
-- MVC
-- MVT
-- MVVM
+1. **MVC**: MVC berperan dalam mengendalikan alur aplikasi serta menjadi perantara antara model dan view 
+2. **MVT**: MVT berperan dalam mengatur tampilan HTML dan merender data dari model ke view
+3. **MVVM**: MVVM berperan dalam mengelola tampilan UI serta menghubungkan model dan viewmodel
