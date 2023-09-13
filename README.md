@@ -42,8 +42,18 @@ return render(request, "main.html", context)`
 2. Command dengan perintah `python manage.py migrate && gunicorn product_inventory.wsgi`
 
 ### 3. BAGAN REQUEST CLIENT
-- Bagan
-- Kaitan antara urls.py, views.py, models.py, dan berkas html
+- **Bagan**
+
+Client (User) --> |URLS (urls.py)| --> |View (views.py)| <--> |Model (models.py)|
+
+      ^                                       ^
+      |                                       |
+      \________ |Template (main.html)|_______/
+- **Kaitan antara urls.py, views.py, models.py, dan berkas html**
+1. Client mengirimkan request dengan mengakses suatu URL web atau aplikasi yang terhubung dengan Django
+2. urls.py akan menentukan view yang akan menangani request tersebut dengan mengarahkan URL ke view function yang sesuai
+3. View function akan memproses request yang masuk dan berinteraksi dengan model (database) untuk mengambil atau menyimpan data yang diperlukan
+4. Setelah selesai memproses request, view akan merender berkas template HTML yang nantinya akan dikirim sebagai respons HTML ke client (HTTP Response) 
 
 ### 4. VIRTUAL ENVIRONMENT
 - Why do we use a virtual environment?
