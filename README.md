@@ -1,3 +1,4 @@
+# TUGAS 2
 ### 1. TAUTAN ADAPTABLE
 Link: https://beseller.adaptable.app/main/
 
@@ -65,3 +66,5 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 1. **MVC**: MVC berperan dalam mengendalikan alur aplikasi serta menjadi perantara antara model dan view 
 2. **MVT**: MVT berperan dalam mengatur tampilan HTML dan merender data dari model ke view
 3. **MVVM**: MVVM berperan dalam mengelola tampilan UI serta menghubungkan model dan viewmodel
+
+# TUGAS 3
