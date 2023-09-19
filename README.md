@@ -68,3 +68,6 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 3. **MVVM**: MVVM berperan dalam mengelola tampilan UI serta menghubungkan model dan viewmodel
 
 # TUGAS 3
+### 1. MENGIMPLEMENTASIKAN CHECKLIST
+- **Membuat input form untuk menambahkan objek model pada app sebelumnya**
+1. 
