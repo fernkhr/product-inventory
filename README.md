@@ -102,3 +102,9 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 ![Screenshot (933)](https://github.com/fernkhr/product-inventory/assets/137986413/33be664b-4425-48bf-a4f0-5e3dc0629c34)
 2. **xml**
 ![Screenshot (934)](https://github.com/fernkhr/product-inventory/assets/137986413/57345d53-5484-4e13-ab5a-925e9781f162)
+3. **json**
+![Screenshot (935)](https://github.com/fernkhr/product-inventory/assets/137986413/dbeabbc9-a7b2-431a-8577-545343099e02)
+4. **xml by id**
+![Screenshot (936)](https://github.com/fernkhr/product-inventory/assets/137986413/53a2dedd-57ad-492c-8fdd-f96653569ab0)
+5. **json by id**
+![Screenshot (937)](https://github.com/fernkhr/product-inventory/assets/137986413/42b8c81b-6010-45d5-86f9-3ed04e426db9)
