@@ -95,4 +95,7 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 ### 4. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
 1. JSON memiliki struktur data yang mirip dengan objek JavaScript sehingga pemrosesan data di browser dapat dilakukan dengan cepat dan efisien
 2. JSON memiliki format data yang ringan, mudah dibaca oleh manusia, dan mudah dipahami oleh komputer
-3. JSON didukung oleh banyak bahasa pemrograman sehingga dapat dilakukan pertukaran data yang seragam antara berbagai bagian aplikasi, bahkan jika ditulis dalam bahasa yang berbeda
+3. JSON didukung oleh banyak bahasa pemrograman sehingga dapat dilakukan pertukaran data yang seragam antara berbagai komponen aplikasi
+
+### 5. SCREENSHOT POSTMAN
+![Screenshot (933)](https://github.com/fernkhr/product-inventory/assets/137986413/33be664b-4425-48bf-a4f0-5e3dc0629c34)
