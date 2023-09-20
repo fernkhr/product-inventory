@@ -98,4 +98,7 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 3. JSON didukung oleh banyak bahasa pemrograman sehingga dapat dilakukan pertukaran data yang seragam antara berbagai komponen aplikasi
 
 ### 5. SCREENSHOT POSTMAN
+1. **html**
 ![Screenshot (933)](https://github.com/fernkhr/product-inventory/assets/137986413/33be664b-4425-48bf-a4f0-5e3dc0629c34)
+2. **xml**
+![Screenshot (934)](https://github.com/fernkhr/product-inventory/assets/137986413/57345d53-5484-4e13-ab5a-925e9781f162)
