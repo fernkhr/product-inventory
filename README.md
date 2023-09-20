@@ -70,4 +70,29 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 # TUGAS 3
 ### 1. MENGIMPLEMENTASIKAN CHECKLIST
 - **Membuat input form untuk menambahkan objek model pada app sebelumnya**
-1. 
+1. Saya membuat berkas `forms.py` pada direktori main untuk membuat struktur form yang dapat menerima input data item baru
+2. Isi dari form disimpan menjadi sebuah objek Item dan list fields berisi name, amount, description, dan price
+- **Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID**
+1. Buka `views.py` pada direktori main dan import modul HttpResponseRedirect, ProductForm, reverse, HttpResponse, dan serializers
+2. Buat fungsi baru dengan nama `create_item(request)` untuk menghasilkan formulir yang dapat menambahkan data item secara otomatis ketika meng-klik button submit
+3. Ubah fungsi `show_main` dengan menambahkan fungsi `Item.objects.all()` yang tersimpan di dalam variable items untuk mengambil seluruh object Item
+4. Buat fungsi-fungsi baru dengan nama `show_xml` dan `show_json` yang menerima parameter request dan tambahkan `data = Item.objects.all()` serta return function berupa HttpResponse
+5. Buat fungsi-fungsi baru dengan nama `show_xml_by_id` dan `show_json_by_id` yang menerima parameter request dan tambahkan `data = Item.objects.filter(pk=id)` serta return function berupa HttpResponse
+- **Membuat routing URL untuk masing-masing views**
+1. Buat file HTML baru dengan nama `create_item` pada direktori main/templates untuk render views
+2. Buka `urls.py` pada direktori main dan import fungsi create_item dan tambahkan `path('create-item', create_item, name='create_item')`
+3. Tambahkan import fungsi show_xml, show_json, show_xml_by_id, show_json_by_id dan tambahkan path url untuk masing-masing views ke dalam urlpatterns
+
+### 2. PERBEDAAN FORM POST DAN FORM GET
+1. **Form POST**: Suatu method pengiriman data dari user ke server yang langsung ditampung oleh action. Data dikirimkan secara tersembunyi, yaitu data tidak ditampilkan pada URL sehingga lebih aman dan tidak terlihat oleh user atau pada log server. Form POST umumnya digunakan untuk mengirimkan data sensitif atau melakukan perubahan di server, contohnya mengirimkan data formulir pendaftaran
+2. **Form GET**: Suatu method pengiriman data dari user ke server melalui URL sebagai bagian dari alamat halaman web sehingga data dapat dilihat oleh user dan dapat terlihat di log server. Form GET umumnya digunakan untuk melakukan permintaan yang tidak mengubah data di server, contohnya pencarian atau penampilan halaman di mesin pencarian web browser
+
+### 3. PERBEDAAN XML, JSON, HTML
+1. **XML**: Digunakan untuk pertukaran data struktural antara berbagai sistem dan juga digunakan dalam integrasi sistem
+2. **JSON**: Digunakan untuk pertukaran data terstruktur dalam format yang mudah dibaca oleh manusia dan diproses oleh komputer sehingga sering digunakan dalam pengembangan web maupun aplikasi
+3. **HTML**: Digunakan untuk mendefinisikan struktur dan tampilan halaman web, bukan untuk pertukaran data
+
+### 4. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+1. JSON memiliki struktur data yang mirip dengan objek JavaScript sehingga pemrosesan data di browser dapat dilakukan dengan cepat dan efisien
+2. JSON memiliki format data yang ringan, mudah dibaca oleh manusia, dan mudah dipahami oleh komputer
+3. JSON didukung oleh banyak bahasa pemrograman sehingga dapat dilakukan pertukaran data yang seragam antara berbagai bagian aplikasi, bahkan jika ditulis dalam bahasa yang berbeda
