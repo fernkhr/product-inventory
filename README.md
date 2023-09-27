@@ -111,8 +111,54 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 
 # TUGAS 4
 ### 1. MENGIMPLEMENTASIKAN CHECKLIST
+- **Mengimplementasikan fungsi registrasi, login, dan logout**
+1. Buka `views.py` pada direktori main. Import modul UserCreationForm, messages, authenticate, login, dan logout
+2. Buat fungsi dengan nama register, login_user, dan logout_user yang menerima parameter request
+3. Fungsi register berfungsi untuk menghasilkan formulir registrasi secara otomatis dan menghasilkan akun pengguna baru
+4. Fungsi login_user berfungsi untuk mengautentikasi pengguna yang ingin login dan fungsi logout_user berfungsi untuk melakukan mekanisme logout
+5. Buat template untuk tampilan halaman register di berkas `register.html`
+6. Buat template untuk tampilan halaman login di berkas `login.html`
+7. Buka berkas `main.html` dan tambahkan kode untuk membuat button logout yang akan ditampilkan di halaman main
+8. Buka `urls.py` pada direktori main. Import fungsi register, login_user, dan logout_user serta tambahkan `path('register/', register, name='register'),` `path('login/', login_user, name='login'),` `path('logout/', logout_user, name='logout'),` di `urlpatterns`
+- **Membuat dua akun pengguna dengan masing-masing tiga dummy data**
+1. Buka `views.py` pada direktori main dan tambahkan import login_required agar bisa merestriksi akses halaman main
+2. Tambahkan kode `@login_required(login_url='/login')` di atas fungsi show_main agar halaman main hanya dapat diakses oleh pengguna yang sudah login (terautentikasi)
+- **Menghubungkan model Item dengan User**
+1. Buka `models.py` pada direktori main dan tambahkan import User
+2. Pada `Item(models.Model)`, tambahkan `user = models.ForeignKey(User, on_delete=models.CASCADE)` untuk mengasosiasikan satu item dengan seorang user
+3. Buka `views.py` pada direktori main dan modifikasi fungsi `create_product` agar Django tidak langsung menyimpan objek yang telah dibuat dari form ke database
+4. Ubah potongan kode pada fungsi `show_main` menjadi `items = Item.objects.filter(user=request.user)` dan `'name': request.user.username,`
+- **Menampilkan detail informasi pengguna yang sedang logged in dan menerapkan cookies seperti last login pada halaman utama aplikasi**
+1. Tambahkan import datetime agar bisa mengakses waktu dan tanggal saat ini
+2. Tambahkan fungsi pada fungsi `login_user` dengan menambahkan cookie yang bernama `last_login` untuk melihat kapan terakhir kali pengguna melakukan login
+3. Pada fungsi `show_main`, tambahkan potongan kode `'last_login': request.COOKIES['last_login'],` ke dalam variabel `context` untuk menampilkan informasi last_login di halaman main
+4. Hapus cookie `last_login` setiap pengguna melakukan `logout`
+5. Menampilkan teks informasi last login dengan menambahkan potongan kode di `main.html`
 
 ### 2. Django UserCreationForm
 1. **Pengertian**
       - Django UserCreationForm adalah salah satu formulir bawaan yang disediakan oleh Django untuk mempermudah pengembangan aplikasi web yang melibatkan autentikasi pengguna. UserCreationForm digunakan untuk membuat form registrasi yang berisi username, password, dan konfirmasi password
 2. **Kelebihan**
+      - Memudahkan para pengembang untuk membuat form registrasi dengan cepat tanpa perlu menulis kode HTML atau membuat validasi secara manual
+      - UserCreationForm menyediakan beberapa tingkatan validasi dan keamanan bawaan, seperti pengujian keunikan username dan validasi password
+      - UserCreationForm terintegrasi dengan user model bawaan Django sehingga pengembang tidak perlu menulis kode khusus untuk menyimpan data pengguna ke dalam basis data
+3. **Kekurangan**
+      - Appearance dan behavior dari UserCreationForm kadang tidak sesuai dengan design atau kebutuhan khusus proyek
+      - UserCreationForm tidak menyediakan fitur-fitur tambahan atau custom logic
+      - UserCreationForm tidak dapat mengimplementasikan pengiriman email konfirmasi saat registrasi user
+
+### 3. AUTENTIKASI DAN OTORISASI
+1. **Autentikasi**: Proses verifikasi identitas pengguna. Dalam Django, saat login, pengguna akan memasukkan username dan password untuk membuktikan bahwa pengguna adalah akun yang sah
+2. **Otorisasi**: Proses penentuan perizinan untuk pengguna yang sudah terautentikasi. Otorisasi akan menentukan apakah pengguna memiliki izin untuk mengakses halaman tertentu, melihat data tertentu, atau melakukan tindakan tertentu pada aplikasi
+3. **Mengapa keduanya penting?** Autentikasi bertujuan untuk memastikan bahwa hanya pengguna yang sah yang memiliki akses masuk ke aplikasi, sedangkan otorisasi bertujuan untuk memastikan bahwa beberapa pengguna hanya memiliki akses ke bagian aplikasi yang sesuai dengan peran atau hak akses mereka. Hal ini penting untuk menjaga keamanan dan mencegah akses yang tidak sah
+
+### 4. COOKIES
+1. **Pengertian**: Data yang digunakan untuk menyimpan informasi yang berisi rekam jejak dan aktivitas pengguna ketika menelusuri sebuah website. Cookies biasanya berbentuk teks dan tersimpan dalam bentuk file teks di komputer pengguna. Cookies akan mengaktifkan suatu website untuk mengingat data pengguna, seperti informasi login
+2. **Cookies pada Django**: Cookies akan mengelola data sesi pengguna dengan mengidentifikasi pengguna yang sudah terautentikasi. Informasi yang diolah dan disimpan adalah ID sesi. Django menggunakan cookies melalui komponen middleware dan session framework. Middleware yang dimiliki oleh Django adalah `django.contrib.sessions.middleware.SessionMiddleware`. Middleware ini berfungsi untuk menyimpan data sesi pengguna secara aman pada sisi pengguna dan mengembalikannya saat pengguna membuat permintaan berikutnya
+
+### 5. KEAMANAN COOKIES
+1. **Apakah penggunaan cookies aman secara default dalam pengembangan web?** Keamanan penggunaan cookies dalam pengembangan web tergantung pada bagaimana pengguna menggunakannya. Cookies sebenarnya tidak berbahaya karena malware sulit masuk ke dalam komputer pengguna. Namun, pengguna harus tetap membatasi penggunaan cookies untuk mencegah beberapa risiko
+2. **Risiko potensial yang dapat terjadi**
+      - Jika cookies mengandung informasi yang sensitif seperti ID sesi, penyerang dapat mengakses akun pengguna atau data sesi sehingga sangat disarankan untuk menggunakan mekanisme keamanan seperti HTTPS untuk mengenkripsi data yang dikirimkan antara peramban dan server
+      - Dalam serangan XSS, penyerang dapat memasukkan skrip jahat ke dalam website yang kemudian dieksekusi oleh user browser. Hal ini berfungsi untuk mencuri cookies pengguna atau melakukan tindakan berbahaya atas nama pengguna
+      - Dalam serangan CSRF, penyerang mengirimkan permintaan palsu dari user browser  yang mengandung cookies autentikasi yang dapat membahayakan aplikasi. Django memiliki mekanisme bawaan untuk melindungi web dari serangan CSRF, tetapi pengembang harus memastikan bahwa mekanisme ini sudah diaktifkan dan digunakan dengan benar
