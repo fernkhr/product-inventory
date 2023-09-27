@@ -108,3 +108,11 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 ![Screenshot (936)](https://github.com/fernkhr/product-inventory/assets/137986413/53a2dedd-57ad-492c-8fdd-f96653569ab0)
 5. **json by id**
 ![Screenshot (937)](https://github.com/fernkhr/product-inventory/assets/137986413/42b8c81b-6010-45d5-86f9-3ed04e426db9)
+
+# TUGAS 4
+### 1. MENGIMPLEMENTASIKAN CHECKLIST
+
+### 2. Django UserCreationForm
+1. **Pengertian**
+      - Django UserCreationForm adalah salah satu formulir bawaan yang disediakan oleh Django untuk mempermudah pengembangan aplikasi web yang melibatkan autentikasi pengguna. UserCreationForm digunakan untuk membuat form registrasi yang berisi username, password, dan konfirmasi password
+2. **Kelebihan**
