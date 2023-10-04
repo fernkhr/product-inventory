@@ -108,3 +108,87 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 ![Screenshot (936)](https://github.com/fernkhr/product-inventory/assets/137986413/53a2dedd-57ad-492c-8fdd-f96653569ab0)
 5. **json by id**
 ![Screenshot (937)](https://github.com/fernkhr/product-inventory/assets/137986413/42b8c81b-6010-45d5-86f9-3ed04e426db9)
+
+# TUGAS 4
+### 1. MENGIMPLEMENTASIKAN CHECKLIST
+- **Mengimplementasikan fungsi registrasi, login, dan logout**
+1. Buka `views.py` pada direktori main. Import modul UserCreationForm, messages, authenticate, login, dan logout
+2. Buat fungsi dengan nama register, login_user, dan logout_user yang menerima parameter request
+3. Fungsi register berfungsi untuk menghasilkan formulir registrasi secara otomatis dan menghasilkan akun pengguna baru
+4. Fungsi login_user berfungsi untuk mengautentikasi pengguna yang ingin login dan fungsi logout_user berfungsi untuk melakukan mekanisme logout
+5. Buat template untuk tampilan halaman register di berkas `register.html`
+6. Buat template untuk tampilan halaman login di berkas `login.html`
+7. Buka berkas `main.html` dan tambahkan kode untuk membuat button logout yang akan ditampilkan di halaman main
+8. Buka `urls.py` pada direktori main. Import fungsi register, login_user, dan logout_user serta tambahkan `path('register/', register, name='register'),` `path('login/', login_user, name='login'),` `path('logout/', logout_user, name='logout'),` di `urlpatterns`
+- **Membuat dua akun pengguna dengan masing-masing tiga dummy data**
+1. Buka `views.py` pada direktori main dan tambahkan import login_required agar bisa merestriksi akses halaman main
+2. Tambahkan kode `@login_required(login_url='/login')` di atas fungsi show_main agar halaman main hanya dapat diakses oleh pengguna yang sudah login (terautentikasi)
+- **Menghubungkan model Item dengan User**
+1. Buka `models.py` pada direktori main dan tambahkan import User
+2. Pada `Item(models.Model)`, tambahkan `user = models.ForeignKey(User, on_delete=models.CASCADE)` untuk mengasosiasikan satu item dengan seorang user
+3. Buka `views.py` pada direktori main dan modifikasi fungsi `create_product` agar Django tidak langsung menyimpan objek yang telah dibuat dari form ke database
+4. Ubah potongan kode pada fungsi `show_main` menjadi `items = Item.objects.filter(user=request.user)` dan `'name': request.user.username,`
+- **Menampilkan detail informasi pengguna yang sedang logged in dan menerapkan cookies seperti last login pada halaman utama aplikasi**
+1. Tambahkan import datetime agar bisa mengakses waktu dan tanggal saat ini
+2. Tambahkan fungsi pada fungsi `login_user` dengan menambahkan cookie yang bernama `last_login` untuk melihat kapan terakhir kali pengguna melakukan login
+3. Pada fungsi `show_main`, tambahkan potongan kode `'last_login': request.COOKIES['last_login'],` ke dalam variabel `context` untuk menampilkan informasi last_login di halaman main
+4. Hapus cookie `last_login` setiap pengguna melakukan `logout`
+5. Menampilkan teks informasi last login dengan menambahkan potongan kode di `main.html`
+
+### 2. Django UserCreationForm
+1. **Pengertian**
+      - Django UserCreationForm adalah salah satu formulir bawaan yang disediakan oleh Django untuk mempermudah pengembangan aplikasi web yang melibatkan autentikasi pengguna. UserCreationForm digunakan untuk membuat form registrasi yang berisi username, password, dan konfirmasi password
+2. **Kelebihan**
+      - Memudahkan para pengembang untuk membuat form registrasi dengan cepat tanpa perlu menulis kode HTML atau membuat validasi secara manual
+      - UserCreationForm menyediakan beberapa tingkatan validasi dan keamanan bawaan, seperti pengujian keunikan username dan validasi password
+      - UserCreationForm terintegrasi dengan user model bawaan Django sehingga pengembang tidak perlu menulis kode khusus untuk menyimpan data pengguna ke dalam basis data
+3. **Kekurangan**
+      - Appearance dan behavior dari UserCreationForm kadang tidak sesuai dengan design atau kebutuhan khusus proyek
+      - UserCreationForm tidak menyediakan fitur-fitur tambahan atau custom logic
+      - UserCreationForm tidak dapat mengimplementasikan pengiriman email konfirmasi saat registrasi user
+
+### 3. AUTENTIKASI DAN OTORISASI
+1. **Autentikasi**: Proses verifikasi identitas pengguna. Dalam Django, saat login, pengguna akan memasukkan username dan password untuk membuktikan bahwa pengguna adalah akun yang sah
+2. **Otorisasi**: Proses penentuan perizinan untuk pengguna yang sudah terautentikasi. Otorisasi akan menentukan apakah pengguna memiliki izin untuk mengakses halaman tertentu, melihat data tertentu, atau melakukan tindakan tertentu pada aplikasi
+3. **Mengapa keduanya penting?** Autentikasi bertujuan untuk memastikan bahwa hanya pengguna yang sah yang memiliki akses masuk ke aplikasi, sedangkan otorisasi bertujuan untuk memastikan bahwa beberapa pengguna hanya memiliki akses ke bagian aplikasi yang sesuai dengan peran atau hak akses mereka. Hal ini penting untuk menjaga keamanan dan mencegah akses yang tidak sah
+
+### 4. COOKIES
+1. **Pengertian**: Data yang digunakan untuk menyimpan informasi yang berisi rekam jejak dan aktivitas pengguna ketika menelusuri sebuah website. Cookies biasanya berbentuk teks dan tersimpan dalam bentuk file teks di komputer pengguna. Cookies akan mengaktifkan suatu website untuk mengingat data pengguna, seperti informasi login
+2. **Cookies pada Django**: Cookies akan mengelola data sesi pengguna dengan mengidentifikasi pengguna yang sudah terautentikasi. Informasi yang diolah dan disimpan adalah ID sesi. Django menggunakan cookies melalui komponen middleware dan session framework. Middleware yang dimiliki oleh Django adalah `django.contrib.sessions.middleware.SessionMiddleware`. Middleware ini berfungsi untuk menyimpan data sesi pengguna secara aman pada sisi pengguna dan mengembalikannya saat pengguna membuat permintaan berikutnya
+
+### 5. KEAMANAN COOKIES
+1. **Apakah penggunaan cookies aman secara default dalam pengembangan web?** Keamanan penggunaan cookies dalam pengembangan web tergantung pada bagaimana pengguna menggunakannya. Cookies sebenarnya tidak berbahaya karena malware sulit masuk ke dalam komputer pengguna. Namun, pengguna harus tetap membatasi penggunaan cookies untuk mencegah beberapa risiko
+2. **Risiko potensial yang dapat terjadi**
+      - Jika cookies mengandung informasi yang sensitif seperti ID sesi, penyerang dapat mengakses akun pengguna atau data sesi sehingga sangat disarankan untuk menggunakan mekanisme keamanan seperti HTTPS untuk mengenkripsi data yang dikirimkan antara peramban dan server
+      - Dalam serangan XSS, penyerang dapat memasukkan skrip jahat ke dalam website yang kemudian dieksekusi oleh user browser. Hal ini berfungsi untuk mencuri cookies pengguna atau melakukan tindakan berbahaya atas nama pengguna
+      - Dalam serangan CSRF, penyerang mengirimkan permintaan palsu dari user browser  yang mengandung cookies autentikasi yang dapat membahayakan aplikasi. Django memiliki mekanisme bawaan untuk melindungi web dari serangan CSRF, tetapi pengembang harus memastikan bahwa mekanisme ini sudah diaktifkan dan digunakan dengan benar
+
+# TUGAS 5
+### 1. MENGIMPLEMENTASIKAN CHECKLIST
+- **Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin**
+- **Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card**
+
+### 2. MANFAAT ELEMENT SELECTOR
+- **Element Selector**: Memilih semua elemen dengan tag yang sama. Digunakan ketika memodifikasi semua paragraf atau semua tautan
+- **Class Selector**: Memilih elemen dengan kelas tertentu. Digunakan ketika membuat tombol dengan kelas "btn"
+- **ID Selector**: Memilih elemen dengan ID unik. Digunakan ketika ingin menerapkan fungsi khusus pada satu elemen tertentu yang memiliki ID unik, seperti header
+- **Universal Selector**: Memilih semua elemen dalam dokumen. Digunakan ketika dalam situasi yang sangat spesifik, karena dapat mempengaruhi seluruh dokumen
+- **Descendant Selector**: Memilih elemen yang berada dalam elemen lain. Digunakan ketika ingin memilih elemen dalam hubungan hierarki, seperti memilih semua elemen daftar (li) dalam elemen daftar tak tertordered (ul)
+- **Attribute Selector**: Memilih elemen berdasarkan atribut dan nilainya. Digunakan ketika ingin memilih elemen berdasarkan tipe tertentu, misalnya memilih semua input dengan tipe "text"
+
+### 3. HTML5 TAG
+- **< html >**: Elemen akar dari setiap halaman HTML5. Semua elemen lainnya akan berada di dalam elemen ini
+- **< head >**: Berisi informasi meta tentang halaman, seperti judul, karakter set, dan tautan ke file CSS
+- **< title >**: Untuk menentukan judul halaman yang akan ditampilkan di bilah judul browser
+- **< body >**: Elemen yang berisi semua konten yang akan ditampilkan di halaman web, seperti teks, gambar, dan elemen lainnya
+- **< a >**: Untuk membuat tautan (hyperlink) ke halaman lain atau sumber eksternal
+- **< table >, < tr >, < th >, dan < td >**: Untuk membuat tabel di halaman web
+- **< meta >**: Untuk memberikan informasi tentang halaman, seperti karakter set atau deskripsi halaman, yang dapat digunakan oleh mesin pencari
+
+### 4. PERBEDAAN MARGIN DAN PADDING
+1. **Margin**: Ruang di luar batas luar elemen HTML dan digunakan untuk mengatur jarak antara elemen dengan elemen lain di sekitarnya. Margin tidak memiliki latar belakang atau warna, dan digunakan untuk mengendalikan seberapa dekat atau jauh elemen tersebut dari elemen-elemen lain di sekitarnya
+2. **Padding**: Ruang di antara batas luar elemen dan kontennya sendiri. Padding digunakan untuk mengatur jarak antara batas luar elemen dan isi atau konten elemen tersebut. Padding dapat memiliki latar belakang atau warna, sehingga memungkinkan untuk memberikan elemen tampilan yang lebih menarik dan mengendalikan seberapa jauh konten elemen tersebut dari batas luar
+
+### 5. PERBEDAAN FRAMEWORK CSS TAILWIND DAN BOOTSTRAP
+1. **Tailwind**: Digunakan untuk membangun tampilan web dengan cara menambahkan kelas-kelas kecil untuk mengatur gaya elemen secara detail. Tailwind memiliki tingkat kustomisasi yang tinggi karena dapat mengatur setiap gaya elemen dengan kelas-kelas yang tersedia. Tailwind cocok digunakan untuk membuat desain yang unik dan sesuai dengan preferensi desain pengembang
+2. **Bootstrap**: Bootstrap menyediakan komponen-komponen siap pakai dengan gaya yang telah ditentukan sehingga tidak perlu mengatur gaya secara detail. Kustomisasi Bootstrap lebih terbatas karena komponen yang digunakan telah ditentukan oleh Bootstrap sehingga lebih banyak usaha untuk mengubahnya. Pengembang dapat menggunakan Bootstrap jika ingin cepat membangun tata letak web dengan desain yang sudah ada dan cukup stabil apalagi jika pengembang tidak memiliki waktu yang banyak untuk menyesuaikan tampilan dengan sangat mendetail
