@@ -166,7 +166,13 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 # TUGAS 5
 ### 1. MENGIMPLEMENTASIKAN CHECKLIST
 - **Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin**
+1. Menambahkan bootstrap css dan js ke aplikasi
+2. Menambahkan navbar pada halaman login, register, dan daftar inventori
+3. Menambahkan fitur edit dan menghapus data item pada halaman daftar inventori
 - **Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card**
+1. Menambahkan warna background halaman web dengan menggunakan class background-color dari Bootstrap
+2. Menambahkan warna pada teks
+3. Menambahkan warna background navbar
 
 ### 2. MANFAAT ELEMENT SELECTOR
 - **Element Selector**: Memilih semua elemen dengan tag yang sama. Digunakan ketika memodifikasi semua paragraf atau semua tautan
