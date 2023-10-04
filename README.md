@@ -162,3 +162,33 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
       - Jika cookies mengandung informasi yang sensitif seperti ID sesi, penyerang dapat mengakses akun pengguna atau data sesi sehingga sangat disarankan untuk menggunakan mekanisme keamanan seperti HTTPS untuk mengenkripsi data yang dikirimkan antara peramban dan server
       - Dalam serangan XSS, penyerang dapat memasukkan skrip jahat ke dalam website yang kemudian dieksekusi oleh user browser. Hal ini berfungsi untuk mencuri cookies pengguna atau melakukan tindakan berbahaya atas nama pengguna
       - Dalam serangan CSRF, penyerang mengirimkan permintaan palsu dari user browser  yang mengandung cookies autentikasi yang dapat membahayakan aplikasi. Django memiliki mekanisme bawaan untuk melindungi web dari serangan CSRF, tetapi pengembang harus memastikan bahwa mekanisme ini sudah diaktifkan dan digunakan dengan benar
+
+# TUGAS 5
+### 1. MENGIMPLEMENTASIKAN CHECKLIST
+- **Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin**
+- **Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card**
+
+### 2. MANFAAT ELEMENT SELECTOR
+- **Element Selector**: Memilih semua elemen dengan tag yang sama. Digunakan ketika memodifikasi semua paragraf atau semua tautan
+- **Class Selector**: Memilih elemen dengan kelas tertentu. Digunakan ketika membuat tombol dengan kelas "btn"
+- **ID Selector**: Memilih elemen dengan ID unik. Digunakan ketika ingin menerapkan fungsi khusus pada satu elemen tertentu yang memiliki ID unik, seperti header
+- **Universal Selector**: Memilih semua elemen dalam dokumen. Digunakan ketika dalam situasi yang sangat spesifik, karena dapat mempengaruhi seluruh dokumen
+- **Descendant Selector**: Memilih elemen yang berada dalam elemen lain. Digunakan ketika ingin memilih elemen dalam hubungan hierarki, seperti memilih semua elemen daftar (li) dalam elemen daftar tak tertordered (ul)
+- **Attribute Selector**: Memilih elemen berdasarkan atribut dan nilainya. Digunakan ketika ingin memilih elemen berdasarkan tipe tertentu, misalnya memilih semua input dengan tipe "text"
+
+### 3. HTML5 TAG
+- **< html >**: Elemen akar dari setiap halaman HTML5. Semua elemen lainnya akan berada di dalam elemen ini
+- **< head >**: Berisi informasi meta tentang halaman, seperti judul, karakter set, dan tautan ke file CSS
+- **< title >**: Untuk menentukan judul halaman yang akan ditampilkan di bilah judul browser
+- **< body >**: Elemen yang berisi semua konten yang akan ditampilkan di halaman web, seperti teks, gambar, dan elemen lainnya
+- **< a >**: Untuk membuat tautan (hyperlink) ke halaman lain atau sumber eksternal
+- **< table >, < tr >, < th >, dan < td >**: Untuk membuat tabel di halaman web
+- **< meta >**: Untuk memberikan informasi tentang halaman, seperti karakter set atau deskripsi halaman, yang dapat digunakan oleh mesin pencari
+
+### 4. PERBEDAAN MARGIN DAN PADDING
+1. **Margin**: Ruang di luar batas luar elemen HTML dan digunakan untuk mengatur jarak antara elemen dengan elemen lain di sekitarnya. Margin tidak memiliki latar belakang atau warna, dan digunakan untuk mengendalikan seberapa dekat atau jauh elemen tersebut dari elemen-elemen lain di sekitarnya
+2. **Padding**: Ruang di antara batas luar elemen dan kontennya sendiri. Padding digunakan untuk mengatur jarak antara batas luar elemen dan isi atau konten elemen tersebut. Padding dapat memiliki latar belakang atau warna, sehingga memungkinkan untuk memberikan elemen tampilan yang lebih menarik dan mengendalikan seberapa jauh konten elemen tersebut dari batas luar
+
+### 5. PERBEDAAN FRAMEWORK CSS TAILWIND DAN BOOTSTRAP
+1. **Tailwind**: Digunakan untuk membangun tampilan web dengan cara menambahkan kelas-kelas kecil untuk mengatur gaya elemen secara detail. Tailwind memiliki tingkat kustomisasi yang tinggi karena dapat mengatur setiap gaya elemen dengan kelas-kelas yang tersedia. Tailwind cocok digunakan untuk membuat desain yang unik dan sesuai dengan preferensi desain pengembang
+2. **Bootstrap**: Bootstrap menyediakan komponen-komponen siap pakai dengan gaya yang telah ditentukan sehingga tidak perlu mengatur gaya secara detail. Kustomisasi Bootstrap lebih terbatas karena komponen yang digunakan telah ditentukan oleh Bootstrap sehingga lebih banyak usaha untuk mengubahnya. Pengembang dapat menggunakan Bootstrap jika ingin cepat membangun tata letak web dengan desain yang sudah ada dan cukup stabil apalagi jika pengembang tidak memiliki waktu yang banyak untuk menyesuaikan tampilan dengan sangat mendetail
