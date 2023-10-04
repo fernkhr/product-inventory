@@ -25,6 +25,18 @@
                     <td>{{item.amount}}</td>
                     <td>{{item.description}}</td>
                     <td>{{item.price}}</td>
+                    <td>
+                        <a href="{% url 'main:edit_item' item.pk %}">
+                            <button>
+                                Edit
+                            </button>
+                        </a>
+                        <a href="{% url 'main:delete_item' item.pk %}">
+                            <button>
+                                Delete
+                            </button>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
