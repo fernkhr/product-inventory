@@ -1,14 +1,45 @@
 {% extends 'base.html' %}
 
-{% block meta %}
-    <title>Login</title>
-{% endblock meta %}
-
 {% block content %}
+<style>
+    /* Gaya CSS untuk latar belakang */
+    body {
+        background-color: #332f2f;
+    }
+    /* Gaya CSS untuk teks */
+    h2, p, td, div{
+        color: #ffffff;
+    }
+    h1{
+        color: #cf1a1a;
+    }
+    .white-text {
+    color: #fff; /* Ubah warna teks tombol menjadi putih */
+    }
+    /* Gaya CSS untuk navigation bar */
+    .navbar {
+        background-color: #201f1f;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+    .navbar a {
+        text-decoration: none;
+        color: #fff;
+        margin: 0 10px;
+    }
+</style>
 
 <div class = "login">
 
-    <h1>Login</h1>
+    <div class="navbar">
+        <div class="navbar-left">
+            <h1>BeSeller Account</h1>
+        </div>
+    </div>
+
+    <p>Masuk ke BeSeller Account Anda</p>
 
     <form method="POST" action="">
         {% csrf_token %}
@@ -25,7 +56,7 @@
 
             <tr>
                 <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
+                <td><input class="btn login_btn white-text" type="submit" value="Login"></td>
             </tr>
         </table>
     </form>

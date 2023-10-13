@@ -1,14 +1,45 @@
 {% extends 'base.html' %}
 
-{% block meta %}
-    <title>Register</title>
-{% endblock meta %}
-
-{% block content %}  
+{% block content %}
+<style>
+    /* Gaya CSS untuk latar belakang */
+    body {
+        background-color: #332f2f;
+    }
+    /* Gaya CSS untuk teks */
+    h2, p, td, div{
+        color: #ffffff;
+    }
+    h1{
+        color: #cf1a1a;
+    }
+    .white-text {
+    color: #fff; /* Ubah warna teks tombol menjadi putih */
+    }
+    /* Gaya CSS untuk navigation bar */
+    .navbar {
+        background-color: #201f1f;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+    .navbar a {
+        text-decoration: none;
+        color: #fff;
+        margin: 0 10px;
+    }
+</style>
 
 <div class = "login">
     
-    <h1>Register</h1>  
+    <div class="navbar">
+        <div class="navbar-left">
+            <h1>BeSeller Account</h1>
+        </div>
+    </div>
+
+    <p>Buat akun BeSeller Anda</p> 
 
         <form method="POST" >  
             {% csrf_token %}  
