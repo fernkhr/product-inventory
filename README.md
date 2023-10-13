@@ -198,3 +198,23 @@ Pembuatan aplikasi web berbasis Django tanpa menggunakan virtual environment mas
 ### 5. PERBEDAAN FRAMEWORK CSS TAILWIND DAN BOOTSTRAP
 1. **Tailwind**: Digunakan untuk membangun tampilan web dengan cara menambahkan kelas-kelas kecil untuk mengatur gaya elemen secara detail. Tailwind memiliki tingkat kustomisasi yang tinggi karena dapat mengatur setiap gaya elemen dengan kelas-kelas yang tersedia. Tailwind cocok digunakan untuk membuat desain yang unik dan sesuai dengan preferensi desain pengembang
 2. **Bootstrap**: Bootstrap menyediakan komponen-komponen siap pakai dengan gaya yang telah ditentukan sehingga tidak perlu mengatur gaya secara detail. Kustomisasi Bootstrap lebih terbatas karena komponen yang digunakan telah ditentukan oleh Bootstrap sehingga lebih banyak usaha untuk mengubahnya. Pengembang dapat menggunakan Bootstrap jika ingin cepat membangun tata letak web dengan desain yang sudah ada dan cukup stabil apalagi jika pengembang tidak memiliki waktu yang banyak untuk menyesuaikan tampilan dengan sangat mendetail
+
+# TUGAS 6
+### PERBEDAAN ASYNCHRONOUS DAN SYNCHRONOUS PROGRAMMING
+1. **Asynchronous programming**: Dalam asynchronous programming, tugas-tugas dieksekusi secara independen dan tidak memblokir eksekusi tugas lainnya. Sebagai contoh, ketika tugas A sedang menunggu data dari jaringan, program tidak akan terhenti dan dapat menjalankan tugas-tugas lainnya. Ketika data yang dibutuhkan sudah tersedia, tugas A akan dijalankan. Ini memungkinkan program untuk tetap responsif dan efisien, terutama dalam kasus seperti operasi jaringan atau I/O yang memerlukan waktu
+2. **Synchronous programming**: Dalam synchronous programming, tugas-tugas dieksekusi satu per satu, mulai dari yang pertama hingga selesai. Artinya, jika suatu tugas memerlukan waktu yang lama untuk menyelesaikan operasi, maka program akan terhenti dan menunggu hingga operasi tersebut selesai sebelum melanjutkan ke tugas berikutnya. Ini dapat mengakibatkan program menjadi lambat jika ada tugas yang memerlukan waktu lama
+
+### PARADIGMA EVENT-DRIVEN PROGRAMMING
+1. **Pengertian**: Pendekatan pemrograman di mana program merespons peristiwa (events) yang terjadi, seperti klik tombol, input pengguna, atau penerimaan data dari jaringan. Program akan mengikuti aliran peristiwa yang terjadi secara asinkron, dan tugas-tugas akan dieksekusi hanya ketika peristiwa yang sesuai terjadi
+2. **Contoh**: Dalam penggunaan AJAX (Asynchronous JavaScript and XML) untuk mengambil data dari server tanpa harus memuat ulang seluruh halaman web. Saat seorang pengguna mengklik tombol atau mengisi formulir, Anda dapat menggunakan AJAX untuk mengirim permintaan ke server dan merespons data yang diterima tanpa mengganggu pengalaman pengguna
+
+### ASYNCHRONOUS PROGRAMMING PADA AJAX
+AJAX memanfaatkan asynchronous programming untuk mengirim permintaan ke server dan menerima respon tanpa memblokir tampilan atau interaksi pengguna. Ini biasanya dilakukan dengan menggunakan objek XMLHttpRequest atau Fetch API dalam JavaScript. Berikut langkah-langkah umumnya:
+1. Membuat objek XMLHttpRequest atau menggunakan Fetch API untuk mengirim permintaan ke server.
+2. Menetapkan fungsi callback yang akan dipanggil ketika respon dari server tiba.
+3. Melakukan permintaan ke server dengan metode seperti xhr.send() atau fetch().
+4. Ketika respon diterima dari server, fungsi callback akan dieksekusi untuk memproses data tersebut tanpa mengganggu interaksi pengguna yang lain.
+
+### FETCH API DAN LIBRARY jQUERY
+1. **AJAX dengan Fetch API**: Fetch API adalah API baru dalam JavaScript yang menyediakan cara modern dan kuat untuk mengambil dan mengirim data asinkron. Ini adalah standar web yang baru dan memiliki dukungan yang baik di seluruh browser modern. Fetch API memungkinkan Anda untuk membuat permintaan HTTP dan mengelola respons dengan lebih mudah
+2. **AJAX dengan Library jQuery**: jQuery adalah library JavaScript yang telah lama digunakan untuk mengelola permintaan asinkron (AJAX) dan banyak tugas lainnya dalam pengembangan web. Namun, dengan kemajuan Fetch API dan peningkatan dukungan JavaScript modern, penggunaan jQuery dalam proyek-proyek baru mungkin menjadi kurang umum
