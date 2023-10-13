@@ -1,7 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Product Inventory Page</h1>
+    <style>
+        /* Gaya CSS untuk latar belakang */
+        body {
+            background-color: #f0f0f0;
+        }
+        /* Gaya CSS untuk teks */
+        h5, p {
+            color: #333;
+        }
+        h1{
+            color: #cf1a1a;
+        }
+        /* Warna latar belakang header tabel */
+        th {
+            background-color: #c4748e;
+        }
+        /* Warna latar belakang tabel */
+        table {
+            background-color: #c9a8b2;
+        }
+        /* Gaya CSS untuk navigation bar */
+        .navbar {
+            background-color: #201f1f;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 10px;
+        }
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #473939;
+            min-width: 160px;
+            z-index: 1;
+        }
+        .profile-dropdown:hover .profile-dropdown-content {
+            display: block;
+        }
+    </style>
+
+    <div class="navbar">
+        <div>
+            <h1>Product Inventory Page</h1>
+        </div>
+        <div>
+            <div class="profile-dropdown">
+                <a href="#">
+                    <img src="path_to_profile_icon.png" alt="Profile" width="30" height="30">
+                    Hi, {{ username }}
+                </a>
+                <div class="profile-dropdown-content">
+                    <a href="{% url 'main:logout' %}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <h5>Application Name: </h5>
     <p>{{ appname }}<p>
