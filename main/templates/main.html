@@ -20,6 +20,13 @@
             padding: 10px;
             border: 1px solid #cf1a1a;
             border-radius: 5px;
+            width: 300px;
+        }
+        /* Gaya CSS untuk container card */
+        .card-container {
+            display: flex; /* Menggunakan flexbox */
+            flex-wrap: wrap; /* Untuk memungkinkan wrap jika terlalu banyak card */
+            gap: 10px; /* Jarak antar card */
         }
         /* Gaya CSS untuk navigation bar */
         .navbar {
@@ -69,16 +76,17 @@
         <div id="item_card" class="card-container">
             {% for item in items %}
                 <div class="card">
+                    <div class="item-navbar"></div>
                     <h3>{{item.name}}</h3>
                     <p>Amount: {{item.amount}}</p>
                     <p>Description: {{item.description}}</p>
                     <p>Price: {{item.price}}</p>
                     <div class="card-buttons">
-                        <a href="{% url 'main:edit_item' item.pk %}">
-                            <button>Edit</button>
+                        <a>
+                            <button type="button" class="btn btn-primary" id="openModalButton" onclick="window.location.href='edit-item/{{ item.id }}'">Edit</button>
                         </a>
-                        <a href="{% url 'main:delete_item' item.pk %}">
-                            <button>Delete</button>
+                        <a>
+                            <button type="button" class="btn btn-danger" id="openModalButton" onclick="window.location.href='delete/{{ item.id }}'">Delete</button>
                         </a>
                     </div>
                 </div>
@@ -91,7 +99,7 @@
             </button>
         </a>
 
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Item</button>
+        <button type="button" class="btn btn-primary" id="openModalButton" onclick="window.location.href='create-item'">Add New Item</button>
 
         <h5>Sesi terakhir login: {{ last_login }}</h5>
      
